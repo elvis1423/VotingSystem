@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="loginRepository" class="repository.LoginRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> 
+	<bean id="loginService" class="service.LoginServiceImpl">
+		<property name="loginRepository" ref="loginRepository"></property>
+	</bean>
+	<bean id="loginAction" class="action.LoginAction" scope="prototype">
+		<property name="loginService" ref="loginService"></property>
+	</bean>
+	
+	<bean id="userRepository" class="repository.UserRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userService" class="service.UserServiceImpl">
+	 	<property name="userRepository" ref="userRepository"></property>
+	</bean>
+	<bean id="userAction" class="action.UserAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<bean id="adminRepository" class="repository.AdminRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminService" class="service.AdminServiceImpl">
+	 	<property name="adminRepository" ref="adminRepository"></property>
+	</bean>
+	<bean id="adminAction" class="action.AdminAction">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+	
+	<bean id="electVoteRepository" class="repository.ElectVoteRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="electVoteService" class="service.ElectVoteServiceImpl">
+	 	<property name="electVoteRepository" ref="electVoteRepository"></property>
+	</bean>
+	<bean id="electVoteAction" class="action.ElectVoteAction">
+		<property name="electVoteService" ref="electVoteService"></property>
+	</bean>
+</beans>

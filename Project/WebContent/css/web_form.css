@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+body{
+padding: 15px ;
+background: url(../res/main/background1.jpg);
+	font-family: arial, 黑体;
+	font-size: 15px;
+}
+H2{font-family: arial, 宋体;font-size: 30px;}
+gg{font-size: 20px;}
+
+#site_content
+{ width: 900px;
+  overflow: hidden;
+  margin: 30px auto 0 auto;
+  padding: 50px 20px 120px 20px;
+  background: #F6F6F0 ;
+  border: 10px solid #FFF;}

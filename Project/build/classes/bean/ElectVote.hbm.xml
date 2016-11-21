@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.ElectVote" table="ft_vote_elect">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="name" column="name" type="java.lang.String" />
+		<property name="content" column="content" type="java.lang.String" />
+		<property name="isDifferential" column="is_differential" type="java.lang.Integer" />
+		<property name="mayChooseCount" column="may_choose_count" type="java.lang.Integer" />
+		<property name="isPublish" column="is_publish" type="java.lang.Integer" />
+		<property name="isAnonymous" column="is_anonymous" type="java.lang.Integer" />
+		<property name="createTime" column="create_time" type="java.util.Date" />
+		<property name="startTime" column="start_time" type="java.util.Date" />
+		<property name="completeTime" column="complete_time" type="java.util.Date" />
+	</class>
+</hibernate-mapping>

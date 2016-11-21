@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="messageResource"/>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	
+	<constant name="struts.multipart.maxSize" value="1024102400"/>
+	<constant name="struts.multipart.saveDir" value="d:/test"></constant>
+	
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+    
+    	<action name="loginAction" class="loginAction" method="execute">
+    		<result name="success" type="redirect">/management.jsp</result>
+			<result name="login">/usermanagement.jsp</result>
+			<result name="input" type="redirect">/login.jsp</result>
+    	</action>
+    	<action name="logoutAction" class="loginAction" method="logout">
+			<result name="success" type="redirect">/login.jsp</result>
+    	</action>
+		<action name="createForm" class="action.AdminAction" method="saveUserInfo">
+        	<result name="success" type="redirect">/main.jsp</result> 
+        	<result name="FAILED" type="redirect">/CreateUser.jsp</result> 
+        </action>
+        <action name="voteconfig" class="action.AdminAction" method="saveVoteConfig">
+        	<result name="success" type="redirect">/main.jsp</result> 
+        </action>
+        <action name="viewgradevoteconfig" class="action.AdminAction" method="viewGradeVodeConfig">
+        	<result name="success">/viewgradevoteconfig.jsp</result> 
+        </action>
+        <action name="viewgradevoteresult" class="action.AdminAction" method="viewGradeVoteResult">
+        	<result name="success">/gradevoteresult.jsp</result>
+        </action>
+        <action name="viewgradevotedetail" class="action.AdminAction" method="viewGradeVoteDetailResult">
+        	<result type="stream">
+        		<param name="inputName">inputStream</param>
+        	</result>
+        </action>
+        <action name="depublishgradevote" class="action.AdminAction" method="dePublishGradeVode">
+        	<result type="stream" name="ajax-success">
+        		<param name="inputName">inputStream</param>
+        	</result> 
+        </action>
+        <action name="publishgradevote" class="action.AdminAction" method="publishGradeVote">
+        	<result type="stream" name="ajax-success">
+        		<param name="inputName">inputStream</param>
+        	</result> 
+        </action>
+        <action name="deletegradevote" class="action.AdminAction" method="deleteGradeVote">
+        	<result type="stream" name="ajax-success">
+        		<param name="inputName">inputStream</param>
+        	</result> 
+        </action>
+        <action name="deletegradevoteconfig" class="action.AdminAction" method="deleteGradeVodeConfig">
+        	<result name="success" type="redirect">/viewgradevoteconfig.jsp</result>
+        </action>
+        
+        
+        <action name="usergradevote" class="action.UserAction" method="retrieveEarliestActiveGradeVote">
+        	<result name="success">/usergradevote.jsp</result>
+        	<result name="unloged">/login.jsp</result>
+        </action>
+        <action name="savegradevote" class="action.UserAction" method="saveGradeVote">
+        	<result name="success">/postusergradevote.jsp</result>
+        	<result name="redirect">/usergradevote.action</result>
+        </action>
+        <action name="userelectvote" class="action.ElectVoteAction" method="retrieveEarliestActiveElectVote">
+        	<result name="success">/electVote/userelectvote.jsp</result>
+        </action>
+        
+		<action name="uploadimage" class="action.UploadAction" method="uploadImage">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/pdf,application/msword,
+					application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+					application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+					application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,
+					application/octet-stream,application/x-rar-compressed
+				</param>
+				<param name="maximumSize">5242880</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/upload/imageshow.jsp</result>
+			<result name="input">/upload/imageupload.jsp</result>
+        </action>
+        <action name="downloadfile" class="action.UploadAction" method="downloadFile">
+        	<result name="success" type="stream">
+        		<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+        		<param name="inputName">inputStream</param>
+        	</result>
+        </action>
+        
+        <!-- electVote Action -->
+        <action name="viewelectvoteresults" class="action.ElectVoteAction" method="listElectVotes">
+        	<result name="success">/electVote/electvoteresult.jsp</result>
+        </action>
+        <action name="electVoteList" class="action.ElectVoteAction" method="listElectVotes">
+        	<result name="success">/electVote/electVoteList.jsp</result>
+        </action>
+        <action name="electVoteEdit" class="action.ElectVoteAction" method="retrieveElectVoteConfig">
+        	<result name="success">/electVote/electVoteEdit.jsp</result>
+        </action>
+        <action name="electVoteAdd" class="action.ElectVoteAction" method="saveElectVote">
+        </action>
+        <action name="electVoteDel" class="action.ElectVoteAction" method="delElectVote">
+        </action>
+        <action name="electVotePublish" class="action.ElectVoteAction" method="publishVote">
+        </action>
+        <action name="electVoteResultAdd" class="action.ElectVoteAction" method="vote">
+        </action>
+        <action name="downloadElectVoteDetailFile" class="action.ElectVoteAction" method="downloadElectVoteDetailFile">
+        </action>
+        <action name="viewelectvotedetail" class="action.ElectVoteAction" method="viewElectVoteDetailResult">
+        	<result type="stream">
+        		<param name="inputName">inputStream</param>
+        	</result>
+        </action>
+        <action name="depublishelectvote" class="action.ElectVoteAction" method="dePublishElectVode">
+        	<result type="stream" name="ajax-success">
+        		<param name="inputName">inputStream</param>
+        	</result> 
+        </action>
+        <action name="publishelectvote" class="action.ElectVoteAction" method="publishElectVote">
+        	<result type="stream" name="ajax-success">
+        		<param name="inputName">inputStream</param>
+        	</result> 
+        </action>
+    </package>
+
+    <include file="example.xml"/>
+
+    <!-- Add packages here -->
+
+</struts>

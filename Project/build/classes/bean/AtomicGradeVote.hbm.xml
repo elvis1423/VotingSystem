@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.AtomicGradeVote" table="ft_vote_grade">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="grade" type="float">
+			<column name="grade"/>
+		</property>
+		<property name="voter" type="java.lang.String">
+			<column name="voter" length="200"/>
+		</property>
+		<many-to-one name="user" column="user_id" class="bean.User" unique="true"/>
+		<many-to-one name="vote" column="config_id" class="bean.VoteConfig" unique="true"/>
+		<many-to-one name="candidate" column="candidate_id" class="bean.Candidate" unique="true"/>
+		<many-to-one name="firstIndex" column="index_id" class="bean.GradeVoteFirstIndex" unique="true"/>
+		<many-to-one name="secondIndex" column="second_index_id" class="bean.GradeVoteSecondIndex" unique="true"/>
+	</class>
+</hibernate-mapping>

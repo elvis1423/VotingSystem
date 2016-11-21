@@ -1,0 +1,11 @@
+votingsystem task list:
+1. divide grade vote config into parts for better looking;(Elvis: done)
+2. use images to make grade vote config page looks better;(Elvis: done)
+3. validation for grade vote config & grade vote preview pages;(Yosephy, Simon)
+4. add grade result after user grade voted;(Elvis: done)
+5. add whether signature logic for grade vote;(Elvis)
+6. implement user elect page;(Elvis: done)
+7. implement generating users' grade vote results;(Elvis: done) 
+8. implement generating users' elect votes result; (Elvis: done)
+9. add logic to prevent unlogged & multiple access; (Elvis: in progress)
+10. unanonymous grade & elect vote;

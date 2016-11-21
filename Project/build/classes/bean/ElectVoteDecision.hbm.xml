@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="bean.ElectVoteDecision" table="ft_vote_elect_decision">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		<property name="cName" column="c_name" type="java.lang.String" />
+		<property name="eName" column="e_name" type="java.lang.String" />
+		<property name="electVoteId" column="vote_elect_id" type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>

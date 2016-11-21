@@ -1,0 +1,2 @@
+1. ElectVoteAction retrieveEarliestActiveElectVote hard code
+2. page arrange disorder when option less than 4 in electVote userelectvote.jsp
